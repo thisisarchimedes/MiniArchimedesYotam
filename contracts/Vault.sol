@@ -1,6 +1,6 @@
 // contracts/Box.sol
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.4;
+pragma solidity 0.8.13;
 
 // Import Ownable from the OpenZeppelin Contracts library
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -16,19 +16,12 @@ contract Vault is Ownable {
     }
 
     function depositFunds(address from, uint256 amount) public onlyOwner {
-        console.log(
-            "balance of user is: ",
-            IERC20(oUSDContractAdress).balanceOf(from)
-        );
-
+        console.log("balance of user is: ", IERC20(oUSDContractAdress).balanceOf(from));
         IERC20(oUSDContractAdress).transferFrom(from, address(this), amount);
     }
 
     function witdrawFunds(address to, uint256 amount) public onlyOwner {
-        console.log(
-            "witdrawFunds: balance of vault's address is: ",
-            IERC20(oUSDContractAdress).balanceOf(address(this))
-        );
+        console.log("witdrawFunds: balance of vault's address is: ",IERC20(oUSDContractAdress).balanceOf(address(this)));
 
         if (IERC20(oUSDContractAdress).balanceOf(address(this)) < amount) {
             revert("Not enough funds in vault");
@@ -44,18 +37,4 @@ contract Vault is Ownable {
         // this one doesnt work, need to figure out why
         return IERC20(oUSDContractAdress).balanceOf(address(this));
     }
-
-    // uint256 private _value;
-
-    // event ValueChanged(uint256 value);
-
-    // // The onlyOwner modifier restricts who can call the store function
-    // function store(uint256 value) public onlyOwner {
-    //     _value = value;
-    //     emit ValueChanged(value);
-    // }
-
-    // function retrieve() public view returns (uint256) {
-    //     return _value;
-    // }
 }
