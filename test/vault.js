@@ -56,21 +56,7 @@ describe("Vault contract", function () {
             expect(userOusdBalance).to.equal(minTransferAmount * 2)
         });
 
-        it("withdrawFunds should move OUSD back to reciever if total supply is enough", async function () {
-
-            await hardhatOusd.transfer(hardhatVault.address, minTransferAmount)
-            const vaultSupplyBeforeWithdraw = await hardhatOusd.balanceOf(hardhatVault.address);
-            // important to test to make sure test actually does sometrhing!
-            expect(vaultSupplyBeforeWithdraw).to.equal(minTransferAmount)
-
-            await hardhatVault.witdrawFunds(endUserAddr.address, minTransferAmount)
-            const archimedesOusdBalance = await hardhatOusd.balanceOf(hardhatVault.address);
-            const userOusdBalance = await hardhatOusd.balanceOf(endUserAddr.address);
-
-            expect(archimedesOusdBalance).to.equal(0)
-            expect(userOusdBalance).to.equal(minTransferAmount * 2)
-
-        }); it("withdrawFunds should revert if total supply is not enough", async function () {
+        it("withdrawFunds should revert if total supply is not enough", async function () {
 
             const vaultSupplyBeforeWithdraw = await hardhatOusd.balanceOf(hardhatVault.address);
             // important to test to make sure test actually does sometrhing!
