@@ -10,7 +10,7 @@ import "hardhat/console.sol";
 contract Vault is Ownable {
     address private oUSDContractAdress;
 
-    constructor(address oUSDContract)  {
+    constructor(address oUSDContract) {
         oUSDContractAdress = oUSDContract;
     }
 
@@ -36,11 +36,4 @@ contract Vault is Ownable {
         IERC20(oUSDContractAdress).approve(address(this), amount);
         IERC20(oUSDContractAdress).transferFrom(address(this), to, amount);
     }
-
-    // //Note: we can get rid of this call and save a static copy of total supply which is updated
-    // // when OUSD is deposited or withdrawn. But can be more open to bugs.
-    // function getVaultsSupply() public onlyOwner returns (uint256) {
-    //     // this one doesnt work, need to figure out why
-    //     return IERC20(oUSDContractAdress).balanceOf(address(this));
-    // }
 }
