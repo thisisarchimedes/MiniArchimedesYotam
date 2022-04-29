@@ -39,7 +39,7 @@
     "asn1": "^0.2.6",
     "assert-plus": "^1.0.0",
     "assertion-error": "^1.1.0",
-    "async": "^2.6.3",
+    "async": "^2.6.4",
     "async-eventemitter": "^0.2.4",
     "asynckit": "^0.4.0",
     "aws-sign2": "^0.7.0",
