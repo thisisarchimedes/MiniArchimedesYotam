@@ -340,7 +340,7 @@
     "typechain": "^3.0.0",
     "typescript": "^4.6.2",
     "typical": "^2.6.1",
-    "undici": "^4.16.0",
+    "undici": "^5.5.1",
     "universalify": "^0.1.2",
     "unpipe": "^1.0.0",
     "uri-js": "^4.4.1",
